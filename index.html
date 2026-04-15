@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPK Bengkel Terbaik - Metode SAW</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-icon">🔧</div>
+            <div>
+                <h1>SPK Bengkel Terbaik</h1>
+                <p>Pemilihan bengkel terbaik untuk masyarakat di lingkungan Unand</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- WEIGHT PANEL -->
+        <section class="card" id="weight-panel">
+            <h2 class="card-title">⚖️ Preferensi Bobot Kriteria</h2>
+            <p class="card-subtitle">Atur bobot sesuai prioritas Anda. Bobot akan dinormalisasi otomatis menjadi 100%.</p>
+
+            <!-- Slider dibangun dinamis oleh JS -->
+            <div class="sliders" id="sliders-container"></div>
+
+            <div class="weight-summary">
+                <span>Total bobot: <strong id="total-weight">100%</strong></span>
+                <button id="reset-btn" class="btn-reset">↺ Reset Default</button>
+            </div>
+        </section>
+
+        <!-- LOADING -->
+        <div id="loading" class="loading hidden">
+            <div class="spinner"></div>
+            <span>Memuat data bengkel...</span>
+        </div>
+
+        <!-- ERROR -->
+        <div id="error-msg" class="error-box hidden"></div>
+
+        <!-- RESULTS -->
+        <section id="results-section" class="hidden">
+
+            <!-- TOP PICK -->
+            <div id="top-pick" class="top-pick"></div>
+
+            <!-- RANKING TABLE -->
+            <div class="card">
+                <h2 class="card-title">📊 Hasil Perankingan SAW</h2>
+                <p class="card-subtitle">
+                    Normalisasi: Benefit = nilai/max · Cost = min/nilai · Skor V = Σ(bobot × r)
+                </p>
+                <div class="table-wrapper">
+                    <table id="ranking-table">
+                        <thead><tr></tr></thead>
+                        <tbody id="ranking-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- DATA TABLE -->
+            <div class="card">
+                <h2 class="card-title">🏪 Matriks Keputusan</h2>
+                <p class="card-subtitle">Nilai tiap alternatif pada masing-masing kriteria (skala 1–5).</p>
+                <div class="table-wrapper">
+                    <table id="data-table">
+                        <thead><tr></tr></thead>
+                        <tbody id="data-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>SPK Bengkel Terbaik · Kelompok 7 · Metode SAW · Bobot tersimpan di browser lokal</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
